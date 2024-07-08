@@ -1,12 +1,15 @@
 package br.com.navita.store.resources;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import br.com.navita.store.model.AppDTO;
+import br.com.navita.store.model.DeviceDTO;
+import br.com.navita.store.service.DeviceService;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
+import org.jboss.resteasy.annotations.Body;
+
+import java.util.List;
 
 @Path("/device")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -14,8 +17,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeviceResource {
 
-    @GET
-    public Response get() {
+    private final DeviceService deviceService;
+
+    @POST
+    public Response createDevice(final DeviceDTO deviceDTO) {
+        deviceService.createDevice(deviceDTO);
+        return Response.ok().build();
+    }
+
+    @PUT
+    public Response updateToken(final DeviceDTO deviceDTO) {
+        deviceService.updateToken(deviceDTO);
         return Response.ok().build();
     }
 

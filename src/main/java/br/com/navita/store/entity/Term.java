@@ -1,29 +1,23 @@
 package br.com.navita.store.entity;
 
-import br.com.navita.store.model.DeviceDTO;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "device")
+@Table(name = "term")
 @Data
-@NoArgsConstructor
 @Accessors(chain = true)
-public class Device {
+public class Term {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "app_id", nullable = false)
-    private String appId;
-
-    @Column(name = "firebase_token")
-    private String firebaseToken;
+    @Column(nullable = false)
+    private String term;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -31,10 +25,6 @@ public class Device {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    public Device(DeviceDTO deviceDTO) {
-        this.appId = deviceDTO.getAppId();
-        this.firebaseToken = deviceDTO.getFirebaseToken();
-    }
 }
 
 
