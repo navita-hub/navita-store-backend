@@ -10,4 +10,8 @@ public class ApplicationException extends RuntimeException {
         super(message);
     }
 
+    public ApplicationException(Throwable error) {
+        super(error);
+    }
+
 }

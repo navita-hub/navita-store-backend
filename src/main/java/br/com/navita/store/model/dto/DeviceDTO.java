@@ -1,4 +1,4 @@
-package br.com.navita.store.model;
+package br.com.navita.store.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

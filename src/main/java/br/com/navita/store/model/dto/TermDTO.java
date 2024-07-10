@@ -1,4 +1,4 @@
-package br.com.navita.store.model;
+package br.com.navita.store.model.dto;
 
 import br.com.navita.store.entity.Term;
 import com.fasterxml.jackson.annotation.JsonInclude;

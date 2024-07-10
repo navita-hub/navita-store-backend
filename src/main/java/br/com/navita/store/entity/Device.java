@@ -1,6 +1,6 @@
 package br.com.navita.store.entity;
 
-import br.com.navita.store.model.DeviceDTO;
+import br.com.navita.store.model.dto.DeviceDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

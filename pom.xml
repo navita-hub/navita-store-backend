@@ -53,10 +53,6 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-security-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-flyway</artifactId>
     </dependency>
     <dependency>
@@ -88,16 +84,11 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-reactive-messaging-rabbitmq</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest-client-jackson</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-jwt</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-jwt-build</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -109,10 +100,11 @@
       <version>2.0.5</version>
     </dependency>
     <dependency>
-      <groupId>org.dhatim</groupId>
-      <artifactId>fastexcel</artifactId>
-      <version>0.16.6</version>
+      <groupId>com.google.firebase</groupId>
+      <artifactId>firebase-admin</artifactId>
+      <version>9.2.0</version>
     </dependency>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>

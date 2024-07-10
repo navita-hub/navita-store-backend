@@ -2,9 +2,8 @@ package br.com.navita.store.service;
 
 import br.com.navita.store.entity.Device;
 import br.com.navita.store.exceptions.ApplicationException;
-import br.com.navita.store.model.DeviceDTO;
+import br.com.navita.store.model.dto.DeviceDTO;
 import br.com.navita.store.repository.DeviceRepository;
-import br.com.navita.store.repository.DeviceTermRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.RequiredArgsConstructor;
 

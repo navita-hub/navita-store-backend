@@ -1,6 +1,6 @@
 package br.com.navita.store.resources;
 
-import br.com.navita.store.model.TermDTO;
+import br.com.navita.store.model.dto.TermDTO;
 import br.com.navita.store.service.TermService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;

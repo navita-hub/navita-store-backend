@@ -2,11 +2,9 @@ package br.com.navita.store.service;
 
 import br.com.navita.store.entity.Device;
 import br.com.navita.store.entity.DeviceTerm;
-import br.com.navita.store.entity.DeviceTermId;
 import br.com.navita.store.entity.Term;
 import br.com.navita.store.exceptions.ApplicationException;
-import br.com.navita.store.model.TermDTO;
-import br.com.navita.store.repository.DeviceTermRepository;
+import br.com.navita.store.model.dto.TermDTO;
 import br.com.navita.store.repository.TermRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;

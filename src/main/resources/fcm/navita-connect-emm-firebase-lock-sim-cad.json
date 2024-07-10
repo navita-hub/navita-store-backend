@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "navita-emm-lock-sim",
+  "private_key_id": "2b9d5ee7679d09faf08f86ce843991a8c0945878",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD0BkatkWIefLpp\nGCZ4CBtFHue0lyI1XoKnRI6xTWzGKG2+jxGQQIy+DZ4tlAgseXPJxtMXJHmoeAk6\nPer4wJ6HHLkzkcB+qOMR5LRXbQZQXBnkB+VmRQTjJr+it/bzRbAxX+5p4RCDmb3z\n112rPqdoKuVfwQniBPjUXd/nS9+8rRQfD+nXLinx64dlWnQ25Nz/8ElrMfHuYjnx\nVhhqKzS6iPN0as8fZcxX9VjeNeW3t8+rDFq+kwSD8zjAHuGl/+35EZKHYy+VPbA4\nxqnYBBmR6N1JE+/JlkNa3fwDRrnwlUftruoZV+/ZcVR8oUW7GIl7wvMmp4eHkWdy\nst0e/iQ1AgMBAAECggEAAp8i+RWP2bbVKYYMUGulNVslZJ6KDCDm45qm3iHwOk8a\nt2Uh7Gw7xtqZGYbBXA71pD7kq4HlZQldxK3VHX/eRCKAx9x367RvShTXA33E8gM8\noPidFDnyGT75k0CJiz1eAk3Jny1p6Ba0Vc9kGXqhFvX9BF1rzdfn/3S/ECT+c0Wz\nC6h5REfEUc9TEE25ahbqv8mcSydxl8M8XT9myWqbeO97FxuvG7R+HQDlYjmCcprW\nOqwAmuQQ3AyojxKTdli7AEj2ri7MZgQ7YF+7AkVoaQY9ynnshcIGp2w+Kmfxy78U\nRL2wgQsZEzfFXwVDfxHbDO+f9dGtviQpYy2xWtc72QKBgQD+js63qQ0N2SIqBFku\n0CTb4VtaehHcxCGg0gEowAscx080w1Iy93BVkGJuEpNyBQxnJiT3Nt6mbUFRaeFK\n338zFG2c/pv+gsMdg8t+H2lXIMPEE4yFgFHYB73Fyg0KO5tMlYz1LWkoxj8QXXbz\nISHyjcC+1qHNIx6Sj5yd/V5NuQKBgQD1aDEaotSgwAw4lEIAmTME5KPAJ3y1jk2F\nKTvldZBktp0G3O47uRY5HyLKJj0Jo3ocX5ypGyugQEJcwQ7DfsZK1xRC7Sr37yHs\n7jVMJBOeYUYCnhMoG1DQPY9RaJqZ+TIXSP+J0b9JIGb8LP5SW+c23YXFnmrI2Z73\nqxg7988oXQKBgQDqYChal67qQjKfhxNp88EMJkkLW/tYTck8nj7s+y0AGU6HIRNs\n08A9N8w41qelQpqx2kAM0htcFpoeUKNbYb5nFHb8Jr0QL+tgIHnbLSa7TvKQdQNb\n49L3WeFT2/33nvwVHlkDYQVCwo1MDxI3Nxlfjz6ZN1sQWjaK8Old2evbGQKBgCZI\nyuBM5r7tNvrcpi9RtxPcV29yuZHZUV6kwCNb49rSYkzfyoqmpUDkCplevcbzKemj\nQN1gz72ASNoPhC4baPPj+dU3Cq0DMVe1Ebt/JVBf/HwMDREEsebKs8EPgI7kwVvA\nl5z4i87sryRIIKTYkYmNpYDe5enPiW05094HGtpBAoGAGSH/e9Gj2N2mxHUkD95G\n3ykh4YrQic8Ynz5qP4I/0ZXwxDO7v7xtmgyYsg8fIwHl46khy9Z2F7ShBY3ESe4H\nxRAPBCV3qaEg7lDFQTjFoMhJFa5+Ka7FSl0z8JONpptLGfrY21UyVyDKSRyrIP0Y\nbAujNE3K178ML6y+I7KO1yI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-na5my@navita-emm-lock-sim.iam.gserviceaccount.com",
+  "client_id": "112294966927626767501",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-na5my%40navita-emm-lock-sim.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
