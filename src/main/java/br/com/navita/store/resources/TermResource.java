@@ -15,7 +15,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Produces(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
 @RequestScoped
-@Tag(name = "Term Resource API")
+@Tag(name = "Term Resource")
 public class TermResource {
 
     private final TermService termService;

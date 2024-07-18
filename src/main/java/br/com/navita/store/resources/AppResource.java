@@ -17,7 +17,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
-@Tag(name = "App Resource API")
+@Tag(name = "App Resource")
 public class AppResource {
 
     private final AppService appService;

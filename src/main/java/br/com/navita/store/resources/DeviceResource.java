@@ -13,7 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
-@Tag(name = "Device Resource API")
+@Tag(name = "Device Resource")
 public class DeviceResource {
 
     private final DeviceService deviceService;
