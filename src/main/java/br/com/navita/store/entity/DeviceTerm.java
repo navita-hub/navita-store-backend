@@ -17,11 +17,11 @@ public class DeviceTerm {
     @EmbeddedId
     public DeviceTermId id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "device_id", insertable=false, updatable=false)
     private Device device;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "term_id", insertable=false, updatable=false)
     private Term term;
 

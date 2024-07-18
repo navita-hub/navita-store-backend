@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeviceDTO {
 
-    private Long id;
     private String appId;
     private String firebaseToken;
 

@@ -10,6 +10,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -26,13 +27,26 @@ public class TermService {
         final Optional<DeviceTerm> deviceTermOptional = this.deviceTermService.getLastDeviceTerm(appId);
 
         final Term term;
+        final boolean accept;
         if (deviceTermOptional.isPresent()) {
-            term = deviceTermOptional.get().getTerm();
+            final DeviceTerm deviceTerm = deviceTermOptional.get();
+
+            final Term lastTerm = termRepository.findLastTerm().orElseThrow(() -> new ApplicationException("Last term not found"));
+            final Term signedTerm = deviceTerm.getTerm();
+
+            if (lastTerm.getCreatedAt().isAfter(signedTerm.getCreatedAt())) {
+                term = lastTerm;
+                accept = Boolean.FALSE;
+            } else {
+                term = signedTerm;
+                accept = Boolean.TRUE;
+            }
         } else {
-            term = termRepository.findLastTerm().orElseThrow(ApplicationException::new);
+            term = termRepository.findLastTerm().orElseThrow(() -> new ApplicationException("Last term not found"));
+            accept = Boolean.FALSE;
         }
 
-        return TermDTO.of(term);
+        return TermDTO.of(term, accept);
     }
 
     @Transactional

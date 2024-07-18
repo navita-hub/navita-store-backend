@@ -25,7 +25,7 @@ public class TermDTO {
         this.accept = accept;
     }
 
-    public static TermDTO of(Term term) {
-        return new TermDTO(term.getId(), term.getTerm());
+    public static TermDTO of(Term term, boolean accept) {
+        return new TermDTO(term.getId(), term.getTerm(), accept);
     }
 }

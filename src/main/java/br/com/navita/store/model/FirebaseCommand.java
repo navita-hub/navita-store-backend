@@ -9,11 +9,10 @@ import java.util.Map;
 import java.util.Objects;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class FirebaseCommand {
 
     private String token;
-    private String commandUuid;
     private Map<String, String> data;
 
     public Message toMessage() {

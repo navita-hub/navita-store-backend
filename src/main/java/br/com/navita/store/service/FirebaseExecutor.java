@@ -47,7 +47,7 @@ public class FirebaseExecutor {
     public void sendCommand(final FirebaseCommand firebaseCommand) {
         final Message message = firebaseCommand.toMessage();
         try {
-            firebaseMessaging.send(message);
+            this.firebaseMessaging.send(message);
         } catch (FirebaseMessagingException e) {
             throw new FirebaseException(e);
         }
