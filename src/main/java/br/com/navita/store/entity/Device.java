@@ -34,6 +34,8 @@ public class Device {
     public Device(DeviceDTO deviceDTO) {
         this.appId = deviceDTO.getAppId();
         this.firebaseToken = deviceDTO.getFirebaseToken();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 }
 

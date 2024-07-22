@@ -21,9 +21,9 @@ public class TermResource {
     private final TermService termService;
 
     @GET
-    @Path("/{appId}")
+    @Path("/{app-id}")
     @Operation(summary = "Buscar termo de uso", description = "Busca o termo assinado, caso não tenha feito, retorna o termo mais atualizado")
-    public Response getTerm(@PathParam("appId") final String appId) {
+    public Response getTerm(@PathParam("app-id") final String appId) {
         return Response.ok(this.termService.getTerm(appId)).build();
     }
 
@@ -49,9 +49,9 @@ public class TermResource {
     }
 
     @POST
-    @Path("/{appId}/{termId}")
+    @Path("/{app-id}/{term-id}")
     @Operation(summary = "Assinar termo", description = "Cria o vínculo de assinatura do termo efetuado pelo cliente")
-    public Response termsAcceptedAt(@PathParam("appId") final String appId, @PathParam("termId") final Long termId) {
+    public Response termsAcceptedAt(@PathParam("app-id") final String appId, @PathParam("term-id") final Long termId) {
         this.termService.termsAcceptedAt(appId, termId);
         return Response.ok().build();
     }

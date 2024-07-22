@@ -23,17 +23,17 @@ public class AppResource {
     private final AppService appService;
 
     @GET
-    @Path("/{appId}")
+    @Path("/{app-id}")
     @Operation(summary = "Solicitar listagem de aplicativos")
-    public Response listApp(@PathParam("appId") final String appId) {
+    public Response listApp(@PathParam("app-id") final String appId) {
         this.appService.listApp(appId);
         return Response.ok().build();
     }
 
     @POST
-    @Path("/{appId}/feedback")
+    @Path("/{app-id}/feedback")
     @Operation(summary = "Recebe notificação de feedback")
-    public Response feedbackApp(@PathParam("appId") final String appId, final FeedbackDTO feedbackDTO) {
+    public Response feedbackApp(@PathParam("app-id") final String appId, final FeedbackDTO feedbackDTO) {
         this.appService.feedback(appId, feedbackDTO);
         return Response.ok().build();
     }
