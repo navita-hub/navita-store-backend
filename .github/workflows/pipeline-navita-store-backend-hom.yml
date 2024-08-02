@@ -31,7 +31,11 @@ jobs:
     - uses: actions/checkout@v3
       with:    
           ref: feature/AMAPI-127        
-          token: ${{ secrets.BUILD_NAVITA }}    
+          token: ${{ secrets.BUILD_NAVITA }}
+
+    
+    - name: Não liberado para deploy
+      run: exit 1;      
     
     - name: Set up JDK 17
       uses: actions/setup-java@v3
