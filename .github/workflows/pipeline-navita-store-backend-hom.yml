@@ -1,36 +1,213 @@
-# This is a basic workflow to help you get started with Actions
+#VARIAVEIS AWS
 
-name: CI
 
-# Controls when the workflow will run
+env:
+  AWS_REGION: us-east-1                                                 # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: emm-navita-store-backend-hom                          # set this to your Amazon ECR repository name
+  ECS_SERVICE: service-emm-navita-store-backend-hom                     # set this to your Amazon ECS service name
+  ECS_CLUSTER: navita-emm-fargate-prod                                  # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION: aws/emm-navita-store-backend-hom.json            # set this to the path to your Amazon ECS task definition
+                                                                        # file, e.g. .aws/task-definition.json
+  CONTAINER_NAME: emm-navita-store-backend-hom                          # set this to the name of the container in the
+                                                                        # containerDefinitions section of your task definition
+
+
+name: HML - emm-navita-store-backend - ALLHOM 
+
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true  
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  BUILD:
     runs-on: ubuntu-latest
+    #runs-on: 
+    #  group: oci_group3 #MicroService Runners
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
+      with:    
+          ref: feature/AMAPI-127        
+          token: ${{ secrets.BUILD_NAVITA }}    
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Verificando se a estrutura esta OK
+      run: ls -ltr src/main/resources/
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+###################################################################################################################################################### 
+#Trocar variaveis de acordo com o ambiente
+#QUARKUS_DATASOURCE_USERNAME_AMBIENTE
+#QUARKUS_DATASOURCE_PASSWORD_AMBIENTE
+#QUARKUS_DATASOURCE_DB_URL_AMBIENTE
+#RABBITMQ_HOST_AMBIENTE
+#RABBITMQ_USERNAME_AMBIENTE
+#RABBITMQ_PASSWORD_AMBIENTE
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+######### REMOVE PROPERTIES
+
+#    - name: Remove line aws.key from application.properties
+#      run: sed -i '/quarkus.s3.aws.credentials.static-provider.access-key-id=/d' src/main/resources/application.properties
+      
+#    - name: Remove line aws.secret from application.properties
+#      run: sed -i '/quarkus.s3.aws.credentials.static-provider.secret-access-key=/d' src/main/resources/application.properties
+      
+#    - name: Remove line quarkus.s3.aws.bucket.name from application.properties
+#      run: sed -i '/quarkus.s3.aws.bucket.name=/d' src/main/resources/application.properties
+
+#    - name: Remove line quarkus.redis.host from application.properties
+#      run: sed -i '/quarkus.redis.host=/d' src/main/resources/application.properties
+      
+#    - name: Remove line redis.host from application.properties
+#      run: sed -i '/redis.host=/d' src/main/resources/application.properties
+
+#    - name: REMOVE PROPERTIES URL_PORTAL
+#      run: sed -i '/connect_portal=/d' src/main/resources/application.properties
+
+#    - name: REMOVE PROPERTIES GOOGLE_CLOUD_KEY
+#      run: sed -i '/google.cloud.key=/d' src/main/resources/application.properties
+
+#    - name: REMOVE PROPERTIES PROJECT_ID
+#      run: sed -i '/project_id=/d' src/main/resources/application.properties
+
+    - name: REMOVE PROPERTIES CLOUD_PROFILE
+      run: sed -i '/CLOUD_PROFILE=/d' src/main/resources/application.properties 
+
+    - name: REMOVE PROPERTIES quarkus.datasource.jdbc.url
+      run: sed -i '/quarkus.datasource.jdbc.url=/d' src/main/resources/application.properties
+      
+    - name: REMOVE PROPERTIES quarkus.datasource.username
+      run: sed -i '/quarkus.datasource.username=/d' src/main/resources/application.properties      
+      
+    - name: REMOVE PROPERTIES quarkus.datasource.password
+      run: sed -i '/quarkus.datasource.password=/d' src/main/resources/application.properties       
+
+    - name: REMOVE PROPERTIES rabbitmq-host
+      run: sed -i '/rabbitmq-host=/d' src/main/resources/application.properties
+
+    - name: REMOVE PROPERTIES rabbitmq-username
+      run: sed -i '/rabbitmq-username=/d' src/main/resources/application.properties
+
+    - name: REMOVE PROPERTIES rabbitmq-password
+      run: sed -i '/rabbitmq-password=/d' src/main/resources/application.properties
+
+ #   - name: REMOVE PROPERTIES REALM_HOST
+ #     run: sed -i '/REALM_HOST=/d' src/main/resources/application.properties     
+
+    
+
+######### ADD PROPERTIES
+
+#    - name: ADD line aws.key in application.properties
+#      run: echo "quarkus.s3.aws.credentials.static-provider.access-key-id=${{ secrets.EMM_BUCKET_KEY_ALLHOM }}" >> src/main/resources/application.properties
+      
+#    - name: ADD line aws.secret in application.properties
+#      run: echo "quarkus.s3.aws.credentials.static-provider.secret-access-key=${{ secrets.EMM_BUCKET_SECRET_ALLHOM }}" >> src/main/resources/application.properties
+
+#    - name: ADD line bucket.name in application.properties
+#      run: echo "bucket.name=emm-hom" >> src/main/resources/application.properties
+
+#    - name: ADD line redis.host in application.properties
+#      run: echo "redis.host=${{ secrets.QUARKUS_REDIS_HOSTS_URL_ALLHOM }}" >> src/main/resources/application.properties
+
+#    - name: Adiciona a variável de ambiente URL_PORTAL
+#      run: echo "connect_portal=https://connect-hom.navita.com.br/portal" >> src/main/resources/application.properties
+
+#    - name: Adiciona a variável de ambiente GOOGLE_CLOUD_KEY
+#      run: echo "GOOGLE_CLOUD_KEY=emm/google-cloud-emm-hom.json" >> src/main/resources/application.properties
+
+#   - name: Adiciona a variável de ambiente PROJECT_ID
+#     run: echo "PROJECT_ID=navita-connect-emm-hom" >> src/main/resources/application.properties
+
+    - name: Adiciona a variável de ambiente CLOUD_PROFILE
+      run: echo "CLOUD_PROFILE=emm-default-hom" >> src/main/resources/application.properties
+
+    - name: Adiciona usuario usado no postgresql no properties
+      run: echo "quarkus.datasource.username=${{ secrets.QUARKUS_DATASOURCE_USERNAME_ALLHOM }}" >> src/main/resources/application.properties
+      
+    - name: Modifica senha usado no postgresql no properties
+      run: echo "quarkus.datasource.password=${{ secrets.QUARKUS_DATASOURCE_PASSWORD_ALLHOM }}" >> src/main/resources/application.properties
+                
+    - name: Adiciona URL banco de dados postgresql no properties
+      run: echo "quarkus.datasource.jdbc.url=jdbc:postgresql://${{ secrets.QUARKUS_DATASOURCE_DB_URL_ALLHOM }}:5432/emm" >> src/main/resources/application.properties     
+            
+    - name: Modifica HOST usado no RABBITMQ no properties
+      run: echo "rabbitmq-host=${{ secrets.RABBITMQ_HOST_ALLHOM }}" >> src/main/resources/application.properties      
+      
+    - name: Modifica USERNAME usado no RABBITMQ no properties
+      run: echo "rabbitmq-username=${{ secrets.RABBITMQ_USERNAME_ALLHOM }}" >> src/main/resources/application.properties
+      
+    - name: Modifica PASSWORD usado no RABBITMQ no properties
+      run: echo "rabbitmq-password=${{ secrets.RABBITMQ_PASSWORD_ALLHOM }}" >> src/main/resources/application.properties
+
+#    - name: Adiciona a variável de ambiente REALM_HOST
+#      run: echo "REALM_HOST=https://auth-hom.navita.com.br/auth/realms/navita-emm/protocol/openid-connect/" >> src/main/resources/application.properties      
+      
+##################
+#PROPERTIES FIXAS
+##################
+      
+    - name: Adicionando log do Sentry como True no properties
+      run: echo "rabbitmq-port=5672" >> src/main/resources/application.properties        
+      
+    - name: Adicionando log do Sentry como True no properties
+      run: echo "quarkus.log.sentry=true" >> src/main/resources/application.properties  
+      
+    - name: Setando log do Sentry como hom no properties
+      run: echo "quarkus.log.sentry.environment=EMM-CONSUMER-ALLHOM" >> src/main/resources/application.properties       
+############      
+            
+
+    - name: Conferir properties
+      run: cat src/main/resources/application.properties
+######################################################################################################################################################    
+  
+    - name: Build with Maven
+#      run: ./mvnw package -Dnative
+      run: ./mvnw package
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ALLPROD }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_ALLPROD }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f src/main/docker/Dockerfile.jvm .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ${{ env.ECS_TASK_DEFINITION }}
+        container-name: ${{ env.CONTAINER_NAME }}
+        image: ${{ steps.build-image.outputs.image }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER }}
+        wait-for-service-stability: false
